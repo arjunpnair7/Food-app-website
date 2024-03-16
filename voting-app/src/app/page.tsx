@@ -21,7 +21,7 @@ export default function Home() {
   const handleCreateNewPartyClick = async() => {
     //api request, code
     console.log("LINE 15");
-    const apiUrl = 'https://localhost:8080/new-party';
+    const apiUrl = 'http://localhost:8080/new-party';
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
