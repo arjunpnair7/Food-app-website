@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/party/page.jsx", "src/app/results/page.jsx", "src/app/vote/page.jsx", "src/app/home/page.jsx", "src/app/WebSocketContext.jsx"],
   "exclude": ["node_modules"]
 }

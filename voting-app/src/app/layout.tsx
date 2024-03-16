@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Head from "next/head"; // Import Head component
 import "./globals.css";
 import { WebSocketProvider } from "./WebSocketContext";
+import { Suspense } from "react";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,9 +27,11 @@ export default function RootLayout({
       <html lang="en" data-theme="dark">
       {/* <body class=""className={inter.className}>{children}</body> */}
         <body className={inter.className}>
+        <Suspense>
           <WebSocketProvider>
             {children}
           </WebSocketProvider>
+          </Suspense>
         </body>
       </html>
     </>
