@@ -16,7 +16,7 @@ const [roomCode, setRoomCode] = useState(null);
 const [data, setData] = useState(null);
 
 const initializeStompClient = () => {
-const socket = new WebSocket('wss://food-app-backend-izbg.onrender.com/wss');
+const socket = new WebSocket('wss://food-app-backend-izbg.onrender.com');
 // const socket = new WebSocket('ws://localhost:8080/ws'); // WebSocket server URL
 const client = Stomp.over(socket);
     client.connect({}, () => {
