@@ -30,20 +30,20 @@ const page = () => {
     const roomCode = 7;
     const userName = 'abc'
 
-    useEffect(() => {
-      // Get roomCode and userName from query parameters
-      if (searchParams) {
-        // const code = searchParams.get('code') || '';
-      const username = searchParams.get('username') || '';
+    // useEffect(() => {
+    //   // Get roomCode and userName from query parameters
+    //   if (searchParams) {
+    //     // const code = searchParams.get('code') || '';
+    //   const username = searchParams.get('username') || '';
       
-      // Set roomCode and userName states
-      // setRoomCode2(code);
-      // setRoomCode(code);
-      setUserName(username);
+    //   // Set roomCode and userName states
+    //   // setRoomCode2(code);
+    //   // setRoomCode(code);
+    //   setUserName(username);
 
-      }
+    //   }
       
-    }, [searchParams]);
+    // }, [searchParams]);
 
 
     useEffect(() => {
