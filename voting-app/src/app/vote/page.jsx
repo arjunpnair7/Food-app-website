@@ -77,6 +77,7 @@ export default function CardHoverEffectDemo() {
       return element; // Return unchanged element for other indices
     });
     setProjects(updated_projects);
+    
   };
 
   let content;
