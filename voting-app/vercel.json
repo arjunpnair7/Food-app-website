@@ -1,0 +1,7 @@
+{
+    "rewrites": [
+      { "source": "/party/:slug*", "destination": "/party" },
+      { "source": "/(.*)", "destination": "/" }
+    ]
+  }
+  
