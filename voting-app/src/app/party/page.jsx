@@ -17,7 +17,7 @@ const page = () => {
     const [location, setLocation] = useState();
     const [listItems, setListItems] = useState([]);
     const [userName, setUserName] = useState('');
-    const [roomCode, setRoomCode2] = useState('')
+    // const [roomCode, setRoomCode2] = useState('')
     
     const router = useRouter()
     // const [stompClient] = useWebSocket();
@@ -27,16 +27,17 @@ const page = () => {
     const [searchParams] = useSearchParams();
     // const roomCode = searchParams.get('code');
     // const userName = searchParams.get('username');
+    const roomCode = 7;
 
     useEffect(() => {
       // Get roomCode and userName from query parameters
       if (searchParams) {
-        const code = searchParams.get('code') || '';
+        // const code = searchParams.get('code') || '';
       const username = searchParams.get('username') || '';
       
       // Set roomCode and userName states
-      setRoomCode2(code);
-      setRoomCode(code);
+      // setRoomCode2(code);
+      // setRoomCode(code);
       setUserName(username);
 
       }
