@@ -20,6 +20,8 @@ const page = () => {
     // const [stompClient] = useWebSocket();
     const { stompClient, setRoomCode, subscribeToRoom, data, tempCode} = useWebSocket();
     let subscription;
+    let code;
+    let username;
     // let listItems;
     
     // const roomCode = 777;
@@ -29,8 +31,8 @@ const page = () => {
     // const userName = searchParams.get('username');
     useEffect(() => {
       // Get roomCode and userName from query parameters
-      const code = searchParams.get('code') || '7';
-      const username = searchParams.get('username') || 'unk';
+      code = searchParams.get('code') || '7';
+      username = searchParams.get('username') || 'unk';
       
       // Set roomCode and userName states
       setRoomCode(code);
