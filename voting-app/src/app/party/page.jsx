@@ -17,6 +17,8 @@ const page = () => {
     const [location, setLocation] = useState();
     const [listItems, setListItems] = useState([]);
     const [userName, setUserName] = useState('');
+    const [roomCode, setRoomCode2] = useState('')
+    
     const router = useRouter()
     // const [stompClient] = useWebSocket();
     const { stompClient, setRoomCode, subscribeToRoom, data, tempCode} = useWebSocket();
@@ -32,6 +34,7 @@ const page = () => {
       const username = searchParams.get('username') || '';
       
       // Set roomCode and userName states
+      setRoomCode2(code);
       setRoomCode(code);
       setUserName(username);
     }, [searchParams]);
