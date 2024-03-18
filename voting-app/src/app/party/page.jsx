@@ -25,6 +25,7 @@ const page = () => {
     let subscription;
 
     const [searchParams] = useSearchParams();
+    console.log("LINE 28: " + searchParams);
     // const roomCode = searchParams.get('code');
     // const userName = searchParams.get('username');
     // const roomCode = 7;
@@ -33,6 +34,7 @@ const page = () => {
     useEffect(() => {
       // Get roomCode and userName from query parameters
       if (searchParams) {
+        console.log("LINE 37: " + searchParams);
         const code = searchParams.get('code');
         const username = searchParams.get('username');
       
