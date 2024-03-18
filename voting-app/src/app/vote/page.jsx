@@ -35,6 +35,22 @@ export default function CardHoverEffectDemo() {
       } else if (data.type == 'DONE_VOTING') {
         console.log("DONE VOTING, CAN PROCEED TO RESULTS SCREEN");
         router.push(`/results`);
+      } else if (data.type == 'VOTE_AGAIN') {
+          console.log("LINE 39: VOTE AGAIN: DATA");
+          const temp = data.data.map(item => ({
+          name: item.name,
+          id: item.id,
+          description: item.name,
+          link: item.name,
+          img_link: item.image_url,
+          rating: item.rating,
+          distance: item.distance,
+          url: item.url,
+          price: item.price,
+          phone: item.phone,
+          checked: false,
+        }));
+        setProjects(temp);
       }
     }
     // console.log(data.data);
@@ -52,6 +68,7 @@ export default function CardHoverEffectDemo() {
   };
 
   const handleCheckboxChange = (index) => {
+    console.log("UPDATE: LINE 71");
     let updated_projects = projects.map((element, idx) => {
       if (idx === index) {
         // Toggle the checked property of the object at the specified index
@@ -73,7 +90,7 @@ export default function CardHoverEffectDemo() {
     </div>
   </div>;
   } else {
-    content = <h1 className="py-6 font-bold text-3xl text-center text-white text-bold">Loading...
+    content = <h1 className="py-6 font-bold text-3xl text-center text-white text-bold">Waiting for friends to finish voting...
     </h1>;
   }
    

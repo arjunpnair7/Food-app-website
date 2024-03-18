@@ -1,10 +1,16 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HoverEffect } from "../components/ui/card-hover-effect";
+import { useWebSocket } from "../WebSocketContext";
+import { useRouter } from 'next/navigation'
 
 
 const page = () => {
+
+  const { stompClient, setRoomCode, subscribeToRoom, data, roomCode} = useWebSocket();
+  const [projects, setProjects] = useState([]);
+  const router = useRouter()
 
     const handleCheckboxChange = (index) => {
         // let updated_projects = projects.map((element, idx) => {
@@ -17,10 +23,50 @@ const page = () => {
         // setProjects(updated_projects);
       };
 
+      const handleSubmit = () => {
+        stompClient.send(`/app/room/${roomCode}/vote-again`, {}, null);
+        // router.push("/vote");
+      }
+
+      
+
+      useEffect(() => {
+        if (data) {
+          console.log(data.data);
+          if (data.type == 'DONE_VOTING') {
+            const temp = data.data.map(item => ({
+              name: item.name,
+              id: item.id,
+              description: item.name,
+              link: item.name,
+              img_link: item.image_url,
+              rating: item.rating,
+              distance: item.distance,
+              url: item.url,
+              price: item.price,
+              phone: item.phone,
+              checked: false,
+            }));
+            setProjects(temp);
+          } else if (data.type == 'VOTE_AGAIN') {
+            console.log("VOTE AGAIN: LINE 52; FROM /RESULTS")
+            router.push("/vote");
+          }
+        }
+      }, [data]);
+
     return (
-        <div className="max-w-5xl mx-auto px-8 text-white">
-          <h1>This is the results screen</h1>
+      <div className="max-w-5xl mx-auto px-8">
+        <h1 className="py-6 font-bold text-3xl text-center text-white text-bold">Here are the results
+        </h1>
+        <HoverEffect handleCheckboxChange={handleCheckboxChange} items={projects} />
+        <div className="flex items-center justify-center">
+          <button className="btn btn-primary btn-wide text-3xl" onClick={handleSubmit}>Vote Again</button>
         </div>
+      </div>
+        // <div className="max-w-5xl mx-auto px-8 text-white">
+        //   <h1>This is the results screen where the final results will be displayed</h1>
+        // </div>
       );
 }
 

@@ -18,6 +18,7 @@ const [data, setData] = useState(null);
 const initializeStompClient = () => {
 // const socket = new WebSocket('wss://food-app-backend-izbg.onrender.com/wss');
 // const socket = new WebSocket('wss://food-app-backend-izbg.onrender.com/wss') // WebSocket server URL
+//'ws://localhost:8080/ws'
 const socket = new WebSocket('wss://food-app-backend-izbg.onrender.com/wss')
 const client = Stomp.over(socket);
     client.connect({}, () => {

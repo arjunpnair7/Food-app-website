@@ -23,6 +23,7 @@ export default function Home() {
     //api request, code
     console.log("LINE 15");
     // https://food-app-backend-izbg.onrender.com/new-party'
+    //http://localhost:8080/new-party
     const apiUrl = 'https://food-app-backend-izbg.onrender.com/new-party';
     fetch(apiUrl)
       .then((response) => {

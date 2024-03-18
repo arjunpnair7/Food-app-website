@@ -16,11 +16,9 @@ const page = () => {
     const [partyMembers, setPartyMembers] = useState([]);
     const [location, setLocation] = useState();
     const [listItems, setListItems] = useState([]);
-    // const [userName, setUserName] = useState('');
-    // const [roomCode, setRoomCode2] = useState('')
+
     
     const router = useRouter()
-    // const [stompClient] = useWebSocket();
     const { stompClient, setRoomCode, subscribeToRoom, data, tempCode} = useWebSocket();
     let subscription;
 
@@ -28,26 +26,6 @@ const page = () => {
     console.log("LINE 28: " + searchParams);
     const roomCode = searchParams.get('code');
     const userName = searchParams.get('username');
-    // const roomCode = 7;
-    // const userName = 'abc'
-
-    // useEffect(() => {
-    //   // Get roomCode and userName from query parameters
-    //   if (searchParams) {
-    //     console.log("LINE 37: " + searchParams);
-    //     const code = searchParams.get('code');
-    //     const username = searchParams.get('username');
-      
-    //   // Set roomCode and userName states
-    //   // setRoomCode2(code);
-    //   // setRoomCode(code);
-    //     setUserName(username);
-    //     setRoomCode(code);
-
-    //   }
-      
-    // }, [searchParams]);
-
 
     useEffect(() => {
       if (data) {
@@ -79,9 +57,6 @@ const page = () => {
         console.log("LINE 25");
       }
       
-      //Start loading screen animation here
-      //Navigate to /vote
-      // router.push(`/vote`);
     };
 
 
