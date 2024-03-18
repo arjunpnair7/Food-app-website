@@ -21,8 +21,9 @@ export default function Home() {
   const handleCreateNewPartyClick = async() => {
     //api request, code
     console.log("LINE 15");
-    // const apiUrl = 'http://localhost:8080/new-party';
-    const apiUrl = 'https://food-app-backend-izbg.onrender.com/new-party'
+    const apiUrl = 'http://localhost:8080/new-party';
+    //https://food-app-backend-izbg.onrender.com
+    // const apiUrl = 'https://food-app-backend-izbg.onrender.com/new-party'
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
