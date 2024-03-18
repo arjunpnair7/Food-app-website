@@ -24,7 +24,7 @@ const page = () => {
     const { stompClient, setRoomCode, subscribeToRoom, data, tempCode} = useWebSocket();
     let subscription;
 
-    const [searchParams] = useSearchParams();
+    const searchParams = useSearchParams();
     console.log("LINE 28: " + searchParams);
     // const roomCode = searchParams.get('code');
     // const userName = searchParams.get('username');
