@@ -16,34 +16,35 @@ const page = () => {
     const [partyMembers, setPartyMembers] = useState([]);
     const [location, setLocation] = useState();
     const [listItems, setListItems] = useState([]);
-    // const [userName, setUserName] = useState('');
-    // const [roomCode, setRoomCode2] = useState('')
+    const [userName, setUserName] = useState('');
+    const [roomCode, setRoomCode2] = useState('')
     
     const router = useRouter()
     // const [stompClient] = useWebSocket();
     const { stompClient, setRoomCode, subscribeToRoom, data, tempCode} = useWebSocket();
     let subscription;
 
-    // const [searchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     // const roomCode = searchParams.get('code');
     // const userName = searchParams.get('username');
-    const roomCode = 7;
-    const userName = 'abc'
+    // const roomCode = 7;
+    // const userName = 'abc'
 
-    // useEffect(() => {
-    //   // Get roomCode and userName from query parameters
-    //   if (searchParams) {
-    //     // const code = searchParams.get('code') || '';
-    //   const username = searchParams.get('username') || '';
+    useEffect(() => {
+      // Get roomCode and userName from query parameters
+      if (searchParams) {
+        const code = searchParams.get('code');
+        const username = searchParams.get('username');
       
-    //   // Set roomCode and userName states
-    //   // setRoomCode2(code);
-    //   // setRoomCode(code);
-    //   setUserName(username);
+      // Set roomCode and userName states
+      // setRoomCode2(code);
+      // setRoomCode(code);
+        setUserName(username);
+        setRoomCode(code);
 
-    //   }
+      }
       
-    // }, [searchParams]);
+    }, [searchParams]);
 
 
     useEffect(() => {
@@ -81,7 +82,6 @@ const page = () => {
       // router.push(`/vote`);
     };
 
-    // console.log("MEMBERS: " + partyMembers);
 
     useEffect(() => {
       console.log("UPDATING PARTY MEMBERS");
@@ -106,17 +106,6 @@ const page = () => {
     }, [partyMembers]);
 
   
-    //   useEffect(() => {
-    //     // setRoomCode(roomCode);
-    //     if('geolocation' in navigator) {
-    //         // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
-    //         navigator.geolocation.getCurrentPosition(({ coords }) => {
-    //             const { latitude, longitude } = coords;
-    //             setLocation({ latitude, longitude });
-    //             console.log("COORDS: " + coords);
-    //         })
-    //     }
-    // }, []);
 
     useEffect(() => {
       // subscribeToRoom(roomCode);
@@ -125,25 +114,6 @@ const page = () => {
         subscribeToRoom(roomCode);
         stompClient.send(`/app/room/${roomCode}/add-user`, {}, userName);
       }
-      // if (stompClient) {
-        // console.log("LINE 46: " + stompClient);
-        //  subscription = stompClient.subscribe('/room/' + roomCode, (message) => {
-          
-        //   console.log("LINE 67");
-        //   console.log('Received message:', message.body);
-        //   const webSocketMessage = JSON.parse(message.body);
-        
-        //   if (webSocketMessage.type == 'USER_LIST') {
-        //       console.log("Updated User List");
-        //       setPartyMembers(webSocketMessage.data);
-        //   } else if (webSocketMessage.type == 'DATA') {
-        //       console.log("Getting restaurant data")
-        //       console.log(webSocketMessage.data);
-              
-        //   }
-        // });
-        // stompClient.send(`/app/room/${roomCode}/add-user`, {}, userName);
-      // }  
     }, [stompClient]);
 
 
