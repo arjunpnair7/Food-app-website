@@ -14,6 +14,7 @@ export default function Home() {
       code: inputCode,
       username: username
     });
+    console.log(inputCode + " and " + username);
     router.push(`/party/?${urlParams}`);
     // router.push(`/party/?code=` + inputCode + '&username=' + username);
   };
@@ -31,6 +32,7 @@ export default function Home() {
         return response.json();
       })
       .then((responseData) => {
+        console.log("response data: " + responseData);
         router.push(`/party/?code=` + responseData + '&username=' + username);
       })
       .catch((error) => {
