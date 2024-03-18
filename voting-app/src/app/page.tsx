@@ -33,7 +33,11 @@ export default function Home() {
       })
       .then((responseData) => {
         console.log("response data: " + responseData);
-        router.push(`/party/?code=` + responseData + '&username=' + username);
+        const urlParams = new URLSearchParams({
+          code: responseData,
+          username: username
+        });
+        router.push(`/party/?${urlParams}`);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);

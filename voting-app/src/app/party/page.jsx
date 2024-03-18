@@ -22,10 +22,11 @@ const page = () => {
     let subscription;
     // let listItems;
     
-
+    const roomCode = 777;
+    const userName = 'abc'
     const [searchParams] = useSearchParams();
-    const roomCode = searchParams.get('code');
-    const userName = searchParams.get('username');
+    // const roomCode = searchParams.get('code');
+    // const userName = searchParams.get('username');
 
     useEffect(() => {
       if (data) {
