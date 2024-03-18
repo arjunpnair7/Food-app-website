@@ -16,7 +16,7 @@ const page = () => {
     const [partyMembers, setPartyMembers] = useState([]);
     const [location, setLocation] = useState();
     const [listItems, setListItems] = useState([]);
-    const [userName, setUserName] = useState('');
+    // const [userName, setUserName] = useState('');
     // const [roomCode, setRoomCode2] = useState('')
     
     const router = useRouter()
@@ -24,10 +24,11 @@ const page = () => {
     const { stompClient, setRoomCode, subscribeToRoom, data, tempCode} = useWebSocket();
     let subscription;
 
-    const [searchParams] = useSearchParams();
+    // const [searchParams] = useSearchParams();
     // const roomCode = searchParams.get('code');
     // const userName = searchParams.get('username');
     const roomCode = 7;
+    const userName = 'abc'
 
     useEffect(() => {
       // Get roomCode and userName from query parameters
