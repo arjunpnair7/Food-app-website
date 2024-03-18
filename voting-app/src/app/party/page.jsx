@@ -22,6 +22,10 @@ const page = () => {
     const { stompClient, setRoomCode, subscribeToRoom, data, tempCode} = useWebSocket();
     let subscription;
 
+    const [searchParams] = useSearchParams();
+    // const roomCode = searchParams.get('code');
+    // const userName = searchParams.get('username');
+
     useEffect(() => {
       // Get roomCode and userName from query parameters
       const code = searchParams.get('code') || '';
@@ -31,6 +35,7 @@ const page = () => {
       setRoomCode(code);
       setUserName(username);
     }, [searchParams]);
+
 
     useEffect(() => {
       if (data) {
@@ -50,15 +55,18 @@ const page = () => {
     const handleStartVoting = (event) => {
       // Add your button click logic here
       console.log("Start Voting Button Clicked");
-      console.log({
-        latitude: location.latitude,
-        longitude: location.longitude
-      });
-      stompClient.send(`/app/room/${roomCode}/get-data`, {}, JSON.stringify({
-        latitude: location.latitude,
-        longitude: location.longitude
-      }));
-      console.log("LINE 25");
+      if (roomCode && userName) {
+        console.log({
+          latitude: location.latitude,
+          longitude: location.longitude
+        });
+        stompClient.send(`/app/room/${roomCode}/get-data`, {}, JSON.stringify({
+          latitude: location.latitude,
+          longitude: location.longitude
+        }));
+        console.log("LINE 25");
+      }
+      
       //Start loading screen animation here
       //Navigate to /vote
       // router.push(`/vote`);
