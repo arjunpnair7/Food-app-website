@@ -30,13 +30,17 @@ const page = () => {
 
     useEffect(() => {
       // Get roomCode and userName from query parameters
-      const code = searchParams.get('code') || '';
+      if (searchParams) {
+        const code = searchParams.get('code') || '';
       const username = searchParams.get('username') || '';
       
       // Set roomCode and userName states
       setRoomCode2(code);
       setRoomCode(code);
       setUserName(username);
+
+      }
+      
     }, [searchParams]);
 
 
