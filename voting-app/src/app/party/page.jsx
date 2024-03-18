@@ -22,11 +22,20 @@ const page = () => {
     let subscription;
     // let listItems;
     
-    const roomCode = 777;
-    const userName = 'abc'
-    const [searchParams] = useSearchParams();
+    // const roomCode = 777;
+    // const userName = 'abc'
+    // const [searchParams] = useSearchParams();
     // const roomCode = searchParams.get('code');
     // const userName = searchParams.get('username');
+    useEffect(() => {
+      // Get roomCode and userName from query parameters
+      const code = searchParams.get('code') || '7';
+      const username = searchParams.get('username') || 'unk';
+      
+      // Set roomCode and userName states
+      setRoomCode(code);
+      setUserName(username);
+    }, []);
 
     useEffect(() => {
       if (data) {
